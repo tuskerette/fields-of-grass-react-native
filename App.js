@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import { Audio } from 'expo-av';
 import styled from 'styled-components/native'
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
-import { getNativeSourceAndFullInitialStatusForLoadAsync } from 'expo-av/build/AV';
 
 export default function App() {
   const [sound, setSound] = React.useState();
@@ -17,21 +16,21 @@ export default function App() {
     console.log('Playing Sound');
     await sound.playAsync(); }
 
-  var blades = [];
+  var grassBlades = [];
   for (let i = 0; i < 400; i++) {
-    blades.push(
-      <Blade key={i} onPress={playSound}>&nbsp;</Blade>
+    grassBlades.push(
+      <GrassBlade key={i} onPress={playSound}>&nbsp;</GrassBlade>
     );
   }
 
   return (
     <StyledView>
-      {blades}
+      {grassBlades}
     </StyledView>
   );
 }
 
-const Blade = styled.Text`
+const GrassBlade = styled.Text`
   background-color: #4d9c0c;
   padding-top: 80px;
   padding-left: 10px;
@@ -46,7 +45,6 @@ const StyledView = styled.View`
   align-items: flex-start;
   justify-content: space-around;
 `;
-
 
   // TRIANGLE
   // width: 0;
