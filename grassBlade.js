@@ -1,46 +1,46 @@
-// import React, { Component, useState } from 'react';
-// import { Audio } from 'expo-av';
-// import styled from 'styled-components/native';
+import React from 'react';
+import { View, Text, Animated } from 'react-native';
+import styled from 'styled-components/native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-// const StyledGrassBlade = styled.View`
-//   background-color: #4d9c0c;
-//   padding-top: 80px;
-//   padding-left: 10px;
-//   margin: 12px;
-// `;
+const StyledGrassBlade = styled.Text`
+  background-color: #4d9c0c;
+  padding-top: 180px;
+  padding-left: 22px;
+  margin: 12px;
+`;
+const LeftActions = () => {
+  return(
+    <StyledGrassBlade>&nbsp;</StyledGrassBlade>
+  )
+}
 
-// class GrassBlade extends Component {
-//     // const [sound, setSound] = React.useState();
+const RightActions = () => {
+  return(
+    <StyledGrassBlade>&nbsp;</StyledGrassBlade>
+  )
+}
 
-//     // async function playSound() {
-//     //     const { sound } = await Audio.Sound.createAsync(
-//     //     require('./assets/wind.mp3')
-//     //     );
-//     //     setSound(sound);
+const GrassBlade = ({ LeftSwipe, RightSwipe }) => (
+  <Swipeable
+    renderLeftActions={LeftActions}
+    renderRightActions={RightActions}
+    onSwipeableLeftOpen={LeftSwipe}
+    onSwipeableRightOpen={RightSwipe}
+  >
+    <StyledGrassBlade>&nbsp;</StyledGrassBlade>
+  </Swipeable>
+);
 
-//     //     console.log('Playing Sound');
-//     //     await sound.playAsync(); }
+export default GrassBlade;
 
-
-
-
-//   render() {
-
-//     return (
-//       <StyledGrassBlade />
-//     );
-//   }
-// }
-
-// export default GrassBlade;
-
-//   // TRIANGLE
-//   // width: 0;
-//   // height: 0;
-//   // border-left-width: 10px;
-//   // border-left-color: transparent;
-//   // border-right-width: 10px;
-//   // border-right-color: transparent;
-//   // border-bottom-width: 120px;
-//   // border-bottom-color: #4d9c0c;
-//   // margin: 5px 7px 2px;
+  // TRIANGLE
+  // width: 0;
+  // height: 0;
+  // border-left-width: 10px;
+  // border-left-color: transparent;
+  // border-right-width: 10px;
+  // border-right-color: transparent;
+  // border-bottom-width: 120px;
+  // border-bottom-color: #4d9c0c;
+  // margin: 5px 7px 2px;

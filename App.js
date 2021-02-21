@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Audio } from 'expo-av';
 import styled from 'styled-components/native';
+import GrassBlade from './GrassBlade';
 
 export default function App() {
-
   const [sound, setSound] = React.useState();
 
   async function playSound() {
@@ -12,12 +12,17 @@ export default function App() {
     );
     setSound(sound);
 
-    await sound.playAsync(); }
+    await sound.playAsync();
+  }
 
   var grassBlades = [];
-  for (let i = 0; i < 400; i++) {
+  for (let i = 0; i < 100; i++) {
     grassBlades.push(
-      <GrassBlade key={i} onPress={playSound}>&nbsp;</GrassBlade>
+      <GrassBlade
+        key={i}
+        LeftSwipe={() => playSound()}
+        RightSwipe={() => playSound()}
+      />
     );
   }
 
@@ -35,11 +40,4 @@ const StyledView = styled.View`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
-`;
-
-const GrassBlade = styled.Text`
-  background-color: #4d9c0c;
-  padding-top: 80px;
-  padding-left: 10px;
-  margin: 12px;
 `;
