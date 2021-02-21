@@ -1,34 +1,29 @@
 import * as React from 'react';
-// import { Audio } from 'expo-av';
+import { Audio } from 'expo-av';
 import styled from 'styled-components/native';
-import GrassBlade from './grassBlade';
 
 export default function App() {
-  // const [sound, setSound] = React.useState();
 
-  // async function playSound() {
-  //   const { sound } = await Audio.Sound.createAsync(
-  //     require('./assets/wind.mp3')
-  //   );
-  //   setSound(sound);
+  const [sound, setSound] = React.useState();
 
-  //   console.log('Playing Sound');
-  //   await sound.playAsync(); }
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require('./assets/wind.mp3')
+    );
+    setSound(sound);
 
-  // var grassBlades = [];
-  // for (let i = 0; i < 400; i++) {
-  //   grassBlades.push(
-  //     <GrassBlade key={i} onPress={playSound}>&nbsp;</GrassBlade>
-  //   );
-  // }
+    await sound.playAsync(); }
+
+  var grassBlades = [];
+  for (let i = 0; i < 400; i++) {
+    grassBlades.push(
+      <GrassBlade key={i} onPress={playSound}>&nbsp;</GrassBlade>
+    );
+  }
 
   return (
     <StyledView>
-      {/* <GrassBlade onPress={playSound}>&nbsp;</GrassBlade> */}
-      <GrassBlade />
-      <GrassBlade />
-      <GrassBlade />
-      <GrassBlade />
+      {grassBlades}
     </StyledView>
   );
 }
@@ -40,4 +35,11 @@ const StyledView = styled.View`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
+`;
+
+const GrassBlade = styled.Text`
+  background-color: #4d9c0c;
+  padding-top: 80px;
+  padding-left: 10px;
+  margin: 12px;
 `;
