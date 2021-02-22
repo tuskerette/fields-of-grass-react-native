@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Audio } from 'expo-av';
 import styled from 'styled-components/native';
-import GrassBlade from './GrassBlade';
+import GrassBlade from './src/GrassBlade';
 
 export default function App() {
   const [sound, setSound] = React.useState();
@@ -16,7 +16,7 @@ export default function App() {
   }
 
   var grassBlades = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 60; i++) {
     grassBlades.push(
       <GrassBlade
         key={i}
